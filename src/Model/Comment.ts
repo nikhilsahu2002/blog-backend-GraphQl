@@ -9,7 +9,9 @@ const CommentSchema : Schema = new Schema({
         type : Date,
         required :true
 
-    }
+    },
+    user:{type : Schema.Types.ObjectId,ref : "user"},
+    blog :{type :Schema.Types.ObjectId,ref :"Blog"}
 })
 
 export default model("comment",CommentSchema)

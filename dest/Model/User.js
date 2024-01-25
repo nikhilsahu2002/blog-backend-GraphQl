@@ -4,19 +4,21 @@ const mongoose_1 = require("mongoose");
 const userSchema = new mongoose_1.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     password: {
         type: String,
         required: true,
         unique: true,
-        minLenght: 6
-    }
+        minlength: 6,
+    },
+    blogs: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Blog" }],
+    comments: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "comment" }],
 });
-exports.default = (0, mongoose_1.model)("user", userSchema);
+exports.default = (0, mongoose_1.model)("User", userSchema);
 //# sourceMappingURL=User.js.map
