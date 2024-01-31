@@ -3,16 +3,13 @@ import { config } from "dotenv";
 import { connectToDatabase } from "./utils/connect";
 import { graphqlHTTP } from "express-graphql";
 import schema from "./handler/handler";
-import cors from "cors";
+import cors from "cors"; // Import the cors middleware
 
 config();
-
 const app = express();
 
-// Enable CORS for all routes
-app.use(cors());
+app.use(cors()); // Enable CORS
 
-// Use the graphqlHTTP middleware
 app.use("/graphql", graphqlHTTP({ schema: schema, graphiql: true }));
 
 connectToDatabase()
