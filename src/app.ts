@@ -9,6 +9,13 @@ const app = express();
 
 app.use("/graphql",graphqlHTTP({schema:schema,graphiql:true}))
 
+app.use(cors());
+
+app.use('/graphql', graphqlHTTP({
+  schema: yourGraphQLSchema,
+  graphiql: true,
+}));
+
 connectToDatabase().then(()=>{
     app.listen(process.env.PORT,()=>console.log(`server is running ${process.env.PORT}`));
 }).catch((err)=>console.log(err))
